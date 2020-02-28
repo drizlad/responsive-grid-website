@@ -1,0 +1,207 @@
+.container{
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	
+	
+}
+.progress{
+	border: 2px solid black;
+	padding: 15px;
+	width: 100%;
+}
+
+.progress__bar{
+	background-color: greenyellow;
+	padding: 15px;
+	
+}
+.btn{
+	background-color: greenyellow;
+	padding: 15px;
+	text-align: center;
+	margin-top: 10px;
+}
+.progress {
+        &__bar {
+    		opacity: 0;
+        }
+    };
+
+.btn {
+    &:active {
+        & > .progress__bar {
+            animation-name: progress-bar;
+            animation-duration: 1000ms
+        }
+    }
+}
+    
+.progress {
+	&__bar {
+		opacity: 0;
+	}
+}
+
+@keyframes progress-bar{
+    0% {
+        transform: scaleX(0);
+        opacity: .5;
+    }
+    17% {
+        transform: scaleX(.18);
+    }
+    24% {
+        transform: scaleX(.4);
+    }
+    46% {
+        transform: scaleX(.81);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+$cd-navy: #0E397F;
+$cd-mint: #15dea5;
+
+@mixin menu__open-accent($dur, $delay) {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #f4f9f8;
+    transform-origin: top left;
+    animation: menu $dur $delay both;
+    z-index: -1;
+}
+
+.menu {
+    min-width: 33vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    background:$cd-mint;
+    overflow: hidden;
+    transform-origin: top left;
+    position: relative;
+    animation: menu 661ms both;
+    z-index: -10;
+    &__open-accent--1{
+        @include menu__open-accent(450ms, 275ms);
+    }
+    &__open-accent--2 {
+            @include menu__open-accent(450ms, 150ms);
+            background: $cd-navy;
+            z-index: -2;
+    }
+    &__item {
+        padding: .75rem;
+        margin: .25rem;
+        background: #fff;
+        animation: menu__item 810ms cubic-bezier(.1,.9,.1,1) both;
+        position: relative;
+        &-accent {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: .25rem;
+            background-color: $cd-mint;
+            animation: menu__accent 400ms both;
+            &--active {
+                background-color: $cd-navy
+            }
+        }
+        &--1 {
+            animation-delay: 475ms;
+            > div {
+                animation-delay: 712ms;
+            }
+        }
+        &--2 {
+            animation-delay: 546ms;
+            > div {
+                animation-delay: 805ms;
+            }
+        }
+        &--3 {
+            animation-delay: 632ms;
+            > div {
+                animation-delay: 914ms;
+            }
+        }
+    }
+}
+
+@keyframes menu {
+    0% {
+        transform: scale(0,.07);
+    }
+    33% {
+        transform: scale(1,.07);
+        animation-timing-function: cubic-bezier(.73,.01,.2,.99)
+    }
+
+}
+
+@keyframes menu__item {
+    0% {
+        transform: translateX(-110%);
+    }
+}
+
+@keyframes menu__accent {
+    0% {
+        transform: scaleY(0);
+    }
+}
+
+
+// .btn {
+//     &:active {
+//         &+.progress {
+//             & > .progress__bar {
+//                 transform: scaleX(1);
+//             }
+//         }
+//     }
+// }
+// .progress {
+//     &__bar {
+// 		transform: scaleX(0);
+// 		transform-origin:left;
+// 		transition: transform 1000ms cubic-bezier(.32,0,.07,1);
+//     }
+// };
+/*
+*$border-rad: 2rem;
+$clr-btn: #15DEA5;
+
+.btn {
+    border-radius: $border-rad;
+    background-color: $clr-btn;
+	position: relative;
+	border: none;
+	padding: .5rem;
+    z-index: 1;
+    &:hover {
+        & .btn__bg {
+            opacity: 1;
+        }
+    }
+    &__bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: darken($clr-btn, 5);
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 250ms;
+    }
+}*/

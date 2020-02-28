@@ -9,6 +9,8 @@
 html{box-sizing: border-box;
     font-family: sans-serif;
     color: var(--dark);
+	background-color: aqua;
+	font-size: 14px;
 
 }
 
@@ -20,7 +22,7 @@ body{background:#ccc;
 
 .btn{background:var(--dark);
     color: var(--light);
-    padding: 0.6rem 1.3rem;
+    padding: 1rem 1.3rem;
     text-decoration: none;
     border: 0;
     
@@ -79,7 +81,8 @@ grid-template-areas:
     background-size: cover;
     background-position: center;
     padding: 3rem;
-    flex-direction: column;
+	display: flex;
+    flex-direction: row;
     align-items:flex-start; 
     justify-content:center;
     box-shadow: var(--shadow)
